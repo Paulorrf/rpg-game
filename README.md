@@ -1,29 +1,29 @@
 ## All classes
 
-### Mage
+### - Mage
 
-### Warrior
+### - Warrior
 
-### Thief
+### - Thief
 
-### Paladin
+### - Paladin
 
 ## All atributes
 
-### Strength
+### - Strength
 
-### Intelligence
+### - Intelligence
 
-### Dexterity
+### - Dexterity
 
-### Wisdom
+### - Wisdom
 
 ## All weapons
 
-### Sword
+### - Sword
 
-### Staff
+### - Staff
 
-### Hammer
+### - Hammer
 
-### Daggers
+### - Daggers
