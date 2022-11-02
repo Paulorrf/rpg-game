@@ -41,11 +41,41 @@ const register = () => {
   });
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(handleCreate)}>
-        <input type="text" placeholder="name" {...register("name")} />
-        <input type="text" placeholder="email" {...register("email")} />
-        <button type="submit">criar usuario</button>
+    <div className="flex flex-col justify-center items-center w-screen h-screen">
+      <h2 className="mb-4">Register a new account!</h2>
+      <form
+        className="flex  shadow-md p-4 border rounded shadow-slate-700 flex-col justify-center text-center items-center"
+        onSubmit={handleSubmit(handleCreate)}
+      >
+        <div className="mb-12">
+          <input
+            className=" text-center border p-2"
+            type="text"
+            placeholder="name"
+            {...register("name")}
+          />
+          <p className="text-red-600">
+            {errors.name && "Please add a valid name!"}
+          </p>
+        </div>
+
+        <div className="mb-12">
+          <input
+            className=" text-center border p-2"
+            type="text"
+            placeholder="email"
+            {...register("email")}
+          />
+          <p className="text-red-600">
+            {errors.email && "Please add a valid email!"}
+          </p>
+        </div>
+        <button
+          className="border bg-cyan-600 text-white rounded w-full py-2"
+          type="submit"
+        >
+          criar usuario
+        </button>
       </form>
     </div>
   );
