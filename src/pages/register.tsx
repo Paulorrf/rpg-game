@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { string } from "yup/lib/locale";
 
 interface DataProps {
   name: String;
@@ -21,10 +24,21 @@ const handleCreate: SubmitHandler<DataProps> = async (data) => {
   return await resp.json();
 };
 
-const register = () => {
-  const { register, handleSubmit } = useForm<DataProps>();
+const schema = yup
+  .object({
+    name: yup.string().matches(/^[a-zA-Z]$/),
+    email: yup.string().email(),
+  })
+  .required();
 
-  console.log(register);
+const register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<DataProps>({
+    resolver: yupResolver(schema),
+  });
 
   return (
     <div>
