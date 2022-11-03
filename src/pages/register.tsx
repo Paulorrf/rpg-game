@@ -41,6 +41,8 @@ const register = () => {
     resolver: yupResolver(schema),
   });
 
+  const [handleCheckbox, setHandleCheckbox] = useState(false);
+
   console.log(errors);
 
   return (
@@ -73,13 +75,23 @@ const register = () => {
             {errors.email && "Please add a valid email!"}
           </p>
         </div>
-        <div className="mb-12">
+        <div className="mb-12 inline-block">
           <input
             className=" text-center border p-2"
-            type="text"
+            type={handleCheckbox ? "text" : "password"}
             placeholder="password"
             {...register("password")}
           />
+          <div className="flex mt-2 justify-center items-center">
+            <input
+              type="checkbox"
+              id="check"
+              onClick={() => setHandleCheckbox((prev) => !prev)}
+            />
+            <label className="ml-2" htmlFor="check">
+              Show Password
+            </label>
+          </div>
           <p className="text-red-600">
             {errors.email && "Please add a valid password!"}
           </p>
