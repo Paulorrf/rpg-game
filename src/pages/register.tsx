@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { string } from "yup/lib/locale";
 
 interface DataProps {
   name: String;
   email: String;
+  password: String;
 }
 
 const handleCreate: SubmitHandler<DataProps> = async (data) => {
-  const { name, email } = data;
+  const { name, email, password } = data;
 
   const resp = await fetch("/api/users", {
     method: "POST",
-    body: JSON.stringify({ name, email }),
+    body: JSON.stringify({ name, email, password }),
   });
 
   if (!resp.ok) {
@@ -26,8 +26,9 @@ const handleCreate: SubmitHandler<DataProps> = async (data) => {
 
 const schema = yup
   .object({
-    name: yup.string().matches(/^[a-zA-Z]$/),
+    name: yup.string().matches(/^[a-zA-Z]+$/),
     email: yup.string().email(),
+    password: yup.string(),
   })
   .required();
 
@@ -39,6 +40,8 @@ const register = () => {
   } = useForm<DataProps>({
     resolver: yupResolver(schema),
   });
+
+  console.log(errors);
 
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen">
@@ -68,6 +71,17 @@ const register = () => {
           />
           <p className="text-red-600">
             {errors.email && "Please add a valid email!"}
+          </p>
+        </div>
+        <div className="mb-12">
+          <input
+            className=" text-center border p-2"
+            type="text"
+            placeholder="password"
+            {...register("password")}
+          />
+          <p className="text-red-600">
+            {errors.email && "Please add a valid password!"}
           </p>
         </div>
         <button
