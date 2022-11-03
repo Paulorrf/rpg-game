@@ -46,15 +46,15 @@ const register = () => {
   console.log(errors);
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen">
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
       <h2 className="mb-4">Register a new account!</h2>
       <form
-        className="flex  shadow-md p-4 border rounded shadow-slate-700 flex-col justify-center text-center items-center"
+        className="flex  flex-col items-center justify-center rounded border p-4 text-center shadow-md shadow-slate-700"
         onSubmit={handleSubmit(handleCreate)}
       >
         <div className="mb-12">
           <input
-            className=" text-center border p-2"
+            className=" border p-2 text-center"
             type="text"
             placeholder="name"
             {...register("name")}
@@ -66,7 +66,7 @@ const register = () => {
 
         <div className="mb-12">
           <input
-            className=" text-center border p-2"
+            className=" border p-2 text-center"
             type="text"
             placeholder="email"
             {...register("email")}
@@ -77,12 +77,12 @@ const register = () => {
         </div>
         <div className="mb-12 inline-block">
           <input
-            className=" text-center border p-2"
+            className=" border p-2 text-center"
             type={handleCheckbox ? "text" : "password"}
             placeholder="password"
             {...register("password")}
           />
-          <div className="flex mt-2 justify-center items-center">
+          <div className="mt-2 flex items-center justify-center">
             <input
               type="checkbox"
               id="check"
@@ -97,7 +97,7 @@ const register = () => {
           </p>
         </div>
         <button
-          className="border bg-cyan-600 text-white rounded w-full py-2"
+          className="w-full rounded border bg-cyan-600 py-2 text-white"
           type="submit"
         >
           criar usuario
