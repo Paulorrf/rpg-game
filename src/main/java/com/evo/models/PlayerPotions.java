@@ -97,6 +97,4 @@ public class PlayerPotions {
             return false;
         return true;
     }
-
-    
 }

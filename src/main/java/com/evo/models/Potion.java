@@ -19,6 +19,8 @@ public class Potion {
 
     private String effect;
 
+    private char size;
+
     public Long getId() {
         return id;
     }
@@ -51,6 +53,14 @@ public class Potion {
         this.effect = effect;
     }
 
+    public char getSize() {
+        return size;
+    }
+
+    public void setSize(char size) {
+        this.size = size;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -59,6 +69,7 @@ public class Potion {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((effect == null) ? 0 : effect.hashCode());
+        result = prime * result + size;
         return result;
     }
 
@@ -91,8 +102,8 @@ public class Potion {
                 return false;
         } else if (!effect.equals(other.effect))
             return false;
+        if (size != other.size)
+            return false;
         return true;
     }
-
-    
 }
